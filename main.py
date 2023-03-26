@@ -29,11 +29,11 @@ DEFAULT_PATH = f"./downloads/{date.today()}"
 SEARCH_LIMIT = 10
 
 # References
-"""
-https://developer.spotify.com/documentation/web-api/
-https://developer.spotify.com/console/tracks/
-https://developer.spotify.com/console/playlists/
-"""
+# """
+# https://developer.spotify.com/documentation/web-api/
+# https://developer.spotify.com/console/tracks/
+# https://developer.spotify.com/console/playlists/
+# """
 
 
 # Get link from user
@@ -104,7 +104,7 @@ def get_json_data_track(track_id, offset, limit, market, token):
 
 # Get json data from spotify's web api using album id
 def get_json_data_album(album_id, offset, limit, market, token):
-    url = f"https://api.spotify.com/v1/playlists/{album_id}/tracks?offset={offset}&limit={limit}&market={market}"
+    url = f"https://api.spotify.com/v1/albums/{album_id}/tracks?offset={offset}&limit={limit}&market={market}"
     payload = {}
     headers = {"authorization": "Bearer " + str(token), "Sec-Fetch-Dest": "empty"}
     response = requests.request("GET", url, headers=headers, data=payload)
@@ -182,9 +182,10 @@ def get_youtube_link(songData):
                 searchData = Search(query).results
                 songLink = filterSearchData(searchData, query)
             except:
-                print(
-                    "Error occurred while filtering the selection results, most likely from accessing YouTube object variables"
-                )
+                pass
+                # print(
+                #     "Error occurred while filtering the selection results, most likely from accessing YouTube object variables"
+                # )
         links.append(songLink)
         # print(f"Found link for {songName} by {artistName}")
     return links
@@ -266,10 +267,10 @@ def download_from_youtube(links):
                         f"Failed to download {yt.title}! Already exists in {DOWNLOAD_PATH}"
                     )
             except:
-                # pass
-                print(
-                    f"Error occurred while downloading song {idx} {yt} from {link}, trying again..."
-                )
+                pass
+                # print(
+                #     f"Error occurred while downloading song {idx} {yt} from {link}, trying again..."
+                # )
     # print(f"Download completed! All files can be located at {DOWNLOAD_PATH}")
     return DOWNLOAD_PATH
 
