@@ -62,11 +62,9 @@ Example Usage
 ```
 >>> streamlit run Downloader.py
 ```
-
-Downloading spotify album and auto merging all songs
-https://user-images.githubusercontent.com/57416682/227983813-134d2c7c-1c1e-4999-9b7a-653157d9fe50.mp4
+![Downloading spotify album and auto merging all songs](https://user-images.githubusercontent.com/57416682/227983813-134d2c7c-1c1e-4999-9b7a-653157d9fe50.mp4)
  
-Downloading spotify playlist and selecting what to merge
-https://user-images.githubusercontent.com/57416682/227983970-ffca17c3-8ac2-4c07-9dff-e9ec327dc7f0.mp4
+
+![Downloading spotify playlist and selecting what to merge](https://user-images.githubusercontent.com/57416682/227983970-ffca17c3-8ac2-4c07-9dff-e9ec327dc7f0.mp4)
 
 
