@@ -62,9 +62,10 @@ Example Usage
 ```
 >>> streamlit run Downloader.py
 ```
-![Downloading spotify album and auto merging all songs](https://github.com/jerheng/Spotify-Utility/blob/main/assets/albumUsage.gif)
+Downloading spotify album and auto merging all songs
+![](https://github.com/jerheng/Spotify-Utility/blob/main/assets/albumUsage.gif)
  
-
-![Downloading spotify playlist and selecting what to merge](https://github.com/jerheng/Spotify-Utility/blob/main/assets/playlistUsage.gif)
+Downloading spotify playlist and selecting what to merge
+![](https://github.com/jerheng/Spotify-Utility/blob/main/assets/playlistUsage.gif)
 
 
