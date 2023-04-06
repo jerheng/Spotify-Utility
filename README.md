@@ -1,6 +1,11 @@
 ## About spotifyUtility
 Python script/app to easily download and merge spotify playlists, albums and single tracks to local mp4 files.
 
+## To-Do
+* Organize and give code more structure
+* Implement recommendations 
+* Graph overviews of playlists downloaded that do not include cloned playlists.
+
 ## Getting Started
 
 ### Prerequisites
