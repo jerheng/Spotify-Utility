@@ -7,26 +7,22 @@ from datetime import date, timedelta
 import requests
 from bs4 import BeautifulSoup
 from pydub import AudioSegment
+from pytube.__main__ import YouTube
+from pytube.contrib.search import Search
 from thefuzz import fuzz
 from tqdm import tqdm
 from unidecode import unidecode
 
-from pytube.__main__ import YouTube
-from pytube.contrib.search import Search
-
-# Default Params
-OFFSET = 0
-LIMIT = (
-    50
-)  # Note that the limit for albums is 50, hence the default is 50 but do edit for your playlists as you require
-# Example usage of OFFSET and LIMIT: https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10
-# In this example, in a list of 50 (total) singles by the specified artist : From the twentieth (offset) single, retrieve the next 10 (limit) singles.
-MARKET = (
-    "SG"  # 2 Character country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-)
-# Default download path for the mp4 files.
-DEFAULT_PATH = f"./downloads/{date.today()}"
-SEARCH_LIMIT = 10
+# Import default parameters from config.json
+config = json.load(open(file="config.json"))
+OFFSET = int(config["OFFSET"])
+LIMIT = int(config["LIMIT"])
+DEFAULT_PATH = config["DEFAULT_PATH"] + str(
+    date.today()
+)  # Please do not change this unless you know what you're doing!
+MARKET = config[
+    "MARKET"
+]  # Please change the default value to yours: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
 # References
 # """
@@ -206,34 +202,6 @@ def check_create_directory(DEFAULT_PATH):
         os.makedirs(DEFAULT_PATH)
         return DEFAULT_PATH
 
-
-# Use links to then download files
-# def download_from_youtube(links):
-#     # Get directory to download the files to
-#     DOWNLOAD_PATH = check_create_directory(DEFAULT_PATH)
-#     for idx, link in enumerate(
-#         tqdm(links, desc="Downloading Songs", ncols=100, smoothing=1)
-#     ):
-#         yt = YouTube(link)
-#         try:
-#             if yt.title not in os.listdir(DOWNLOAD_PATH):
-#                 # print(f"Downloading {yt.title} from URL: {link}")
-#                 # video = yt.streams.filter(only_audio=True).first()
-#                 # out_file = video.download(output_path=DOWNLOAD_PATH)
-#                 yt.streams.get_audio_only().download(output_path=DOWNLOAD_PATH)
-#             else:
-#                 print(
-#                     f"Failed to download {yt.title}! Already exists in {DOWNLOAD_PATH}"
-#                 )
-#         except:
-#             if idx == len(links) - 1:
-#                 print(f"Error occured while downloading song {idx} {yt} from {link}")
-#             else:
-#                 print(
-#                     f"Error occured while downloading song {idx} {yt} from {link}, continuing download process"
-#                 )
-#     # print(f"Download completed! All files can be located at {DOWNLOAD_PATH}")
-#     return DOWNLOAD_PATH
 
 # Use links to then download files
 def download_from_youtube(links):

@@ -1,15 +1,15 @@
 # Download viewer
 # Imports
-import streamlit as st
-import os
 import math
+import os
 from datetime import datetime
+
 import pandas as pd
-from st_aggrid.grid_options_builder import GridOptionsBuilder
-from st_aggrid import AgGrid
+import streamlit as st
 from helper import combine_selected_songs
 from natsort import natsorted
-
+from st_aggrid import AgGrid
+from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 # Helper functions
 
@@ -138,16 +138,20 @@ if mergeButton:
 refreshButton = col2.button("Refresh")
 
 viewSongsBox = col3.checkbox("Preview Songs", value=False)
+
+
 def viewSongPlayer(folderSelection):
-    #Generate audio object for all songs in current selected folder
+    # Generate audio object for all songs in current selected folder
     songList = natsorted(os.listdir(f"./downloads/{folderSelection}"))
     for song in songList:
-        #Check if file is .mp4 
+        # Check if file is .mp4
         if song.split(".")[-1] == "mp4":
             st.write(song)
             st.audio(
-                open(f"./downloads/{folderSelection}/{song}","rb").read(), format = "audio/ogg"
+                open(f"./downloads/{folderSelection}/{song}", "rb").read(),
+                format="audio/ogg",
             )
 
-if viewSongsBox: #if box is selected
+
+if viewSongsBox:  # if box is selected
     viewSongPlayer(folderSelection)

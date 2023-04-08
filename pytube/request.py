@@ -9,7 +9,7 @@ from urllib import parse
 from urllib.error import URLError
 from urllib.request import Request, urlopen
 
-from pytube.exceptions import RegexMatchError, MaxRetriesExceeded
+from pytube.exceptions import MaxRetriesExceeded, RegexMatchError
 from pytube.helpers import regex_search
 
 logger = logging.getLogger(__name__)

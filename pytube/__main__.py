@@ -11,8 +11,10 @@ from typing import Any, Callable, Dict, List, Optional
 
 import pytube
 import pytube.exceptions as exceptions
+from pytube.streams import Stream
+from pytube.query import StreamQuery, CaptionQuery
+from pytube.captions import Caption
 from pytube import extract, request
-from pytube import Stream, StreamQuery
 from pytube.helpers import install_proxy
 from pytube.innertube import InnerTube
 from pytube.metadata import YouTubeMetadata
@@ -267,7 +269,7 @@ class YouTube:
         self._vid_info = innertube_response
 
     @property
-    def caption_tracks(self) -> List[pytube.Caption]:
+    def caption_tracks(self) -> List[Caption]:
         """Get a list of :class:`Caption <Caption>`.
 
         :rtype: List[Caption]
@@ -280,7 +282,7 @@ class YouTube:
         return [pytube.Caption(track) for track in raw_tracks]
 
     @property
-    def captions(self) -> pytube.CaptionQuery:
+    def captions(self) -> CaptionQuery:
         """Interface to query caption tracks.
 
         :rtype: :class:`CaptionQuery <CaptionQuery>`.

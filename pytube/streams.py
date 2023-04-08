@@ -8,9 +8,8 @@ separately).
 """
 import logging
 import os
-from math import ceil
-
 from datetime import datetime
+from math import ceil
 from typing import BinaryIO, Dict, Optional, Tuple
 from urllib.error import HTTPError
 from urllib.parse import parse_qs

@@ -1,32 +1,28 @@
 # Imports
 import json
 import os
-import streamlit as st
-import pandas as pd
 from datetime import date, timedelta
 
+import pandas as pd
 import requests
+import streamlit as st
 from bs4 import BeautifulSoup
 from pydub import AudioSegment
+from pytube.__main__ import YouTube
+from pytube.contrib.search import Search
 from thefuzz import fuzz
 from unidecode import unidecode
 
-from pytube.__main__ import YouTube
-from pytube.contrib.search import Search
-
-# Default Params
-OFFSET = 0
-LIMIT = (
-    50
-)  # Note that the limit for albums is 50, hence the default is 50 but do edit for your playlists as you require
-# Example usage of OFFSET and LIMIT: https://api.spotify.com/v1/artists/1vCWHaC5f2uS3yhpwWbIA6/albums?album_type=SINGLE&offset=20&limit=10
-# In this example, in a list of 50 (total) singles by the specified artist : From the twentieth (offset) single, retrieve the next 10 (limit) singles.
-MARKET = (
-    "SG"  # 2 Character country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-)
-# Default download path for the mp4 files.
-DEFAULT_PATH = f"./downloads/{date.today()}"  # Please do not change this!
-SEARCH_LIMIT = 10
+# Import default parameters from config.json
+config = json.load(open(file="config.json"))
+OFFSET = int(config["OFFSET"])
+LIMIT = int(config["LIMIT"])
+DEFAULT_PATH = config["DEFAULT_PATH"] + str(
+    date.today()
+)  # Please do not change this unless you know what you're doing!
+MARKET = config[
+    "MARKET"
+]  # Please change the default value to yours: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
 
 # References
 # """

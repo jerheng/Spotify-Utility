@@ -1,0 +1,6 @@
+{
+    "OFFSET":0,
+    "LIMIT":50,
+    "DEFAULT_PATH":"./downloads/",
+    "MARKET":"SG"
+}

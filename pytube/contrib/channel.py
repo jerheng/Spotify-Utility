@@ -4,7 +4,8 @@ import json
 import logging
 from typing import Dict, List, Optional, Tuple
 
-from pytube import extract, Playlist, request
+from pytube import extract, request
+from pytube.contrib.playlist import Playlist
 from pytube.helpers import uniqueify
 
 logger = logging.getLogger(__name__)

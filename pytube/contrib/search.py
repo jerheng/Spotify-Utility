@@ -6,7 +6,6 @@ import logging
 from pytube import YouTube
 from pytube.innertube import InnerTube
 
-
 logger = logging.getLogger(__name__)
 
 

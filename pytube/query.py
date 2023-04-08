@@ -2,7 +2,8 @@
 from collections.abc import Mapping, Sequence
 from typing import Callable, List, Optional, Union
 
-from pytube import Caption, Stream
+from pytube.captions import Caption
+from pytube.streams import Stream
 from pytube.helpers import deprecated
 
 
