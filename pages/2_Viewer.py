@@ -120,7 +120,8 @@ if folderSelection:
 # st.write(st.session_state)
 
 # Create a button for users to select what they want to merge here.
-col1, col2, col3 = st.columns([1, 1, 8])
+col1, col2, col3, col4 = st.columns([1, 1, 1, 8])
+
 mergeButton = col1.button("Merge")
 if mergeButton:
     selected = st.session_state["selectedRows"]
@@ -135,3 +136,18 @@ if mergeButton:
         # Add a button next to Merge Selected to refresh table
 
 refreshButton = col2.button("Refresh")
+
+viewSongsBox = col3.checkbox("Preview Songs", value=False)
+def viewSongPlayer(folderSelection):
+    #Generate audio object for all songs in current selected folder
+    songList = natsorted(os.listdir(f"./downloads/{folderSelection}"))
+    for song in songList:
+        #Check if file is .mp4 
+        if song.split(".")[-1] == "mp4":
+            st.write(song)
+            st.audio(
+                open(f"./downloads/{folderSelection}/{song}","rb").read(), format = "audio/ogg"
+            )
+
+if viewSongsBox: #if box is selected
+    viewSongPlayer(folderSelection)
